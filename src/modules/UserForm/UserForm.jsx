@@ -7,19 +7,21 @@ import formFields from './form-fields';
 import initialValues from './form-initual-values';
 import validationSchema from './validation-schema';
 
+import { createOrder } from 'shared/services/api';
+
 import TextField from 'shared/components/TextField/TextField';
 import { Wrapper } from './UserForm.styled';
 
 const UserForm = () => {
   const cart = useSelector(selectCart);
 
-  const handleSubmit = values => {
+  const handleSubmit = async values => {
     const result = {
       customerData: { ...values },
       order: [...cart],
     };
-    console.log(result);
-    // console.log(values);
+    // console.log(result);
+    await createOrder(result);
   };
 
   return (

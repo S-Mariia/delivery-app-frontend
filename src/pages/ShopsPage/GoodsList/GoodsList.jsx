@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { getGoodsFromShop } from 'shared/services/shops-api';
+import { getGoodsFromShop } from 'shared/services/api';
 
 import { selectCurrentShop } from 'redux/shops/shops-selectors';
 
@@ -36,9 +36,9 @@ const GoodsList = () => {
   return (
     <Wrapper>
       <List>
-        {goods.map(good => (
-          <GoodsItem key={good.id} good={good} />
-        ))}
+        {goods.map(good => {
+          return <GoodsItem key={good._id} good={good} />;
+        })}
       </List>
     </Wrapper>
   );

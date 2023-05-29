@@ -10,6 +10,9 @@ const Navigation = () => {
         <li>
           <StyledLink to="/cart">Shopping Cart</StyledLink>
         </li>
+        <li>
+          <StyledLink to="/history">History</StyledLink>
+        </li>
       </List>
     </nav>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getListOfShops } from 'shared/services/shops-api';
+import { getListOfShops } from 'shared/services/api';
 
 import { setCurrentShop } from 'redux/shops/shops-slice';
 import { selectCurrentShop } from 'redux/shops/shops-selectors';
@@ -37,7 +37,7 @@ const Shops = () => {
   }, []);
 
   const handleClick = shop => {
-    if (shop !== currentShop && cart.length > 0) {
+    if (shop.name !== currentShop.name && cart.length > 0) {
       console.log('Cart is full');
       return;
     }
@@ -46,14 +46,14 @@ const Shops = () => {
 
   return (
     <List>
-      {shopsList.map((shop, idx) => (
-        <li key={idx}>
+      {shopsList.map(({ name, _id: id }) => (
+        <li key={id}>
           <StyledButton
-            currentShop={currentShop}
-            shop={shop}
-            onClick={() => handleClick(shop)}
+            currentShop={currentShop.name}
+            shop={name}
+            onClick={() => handleClick({ name, id })}
           >
-            {shop}
+            {name}
           </StyledButton>
         </li>
       ))}

@@ -11,7 +11,7 @@ const CartItem = ({ item }) => {
   const handleInputChange = e => {
     const quantity = e.target.value;
     //   console.log({ id: item.id, quantity });
-    dispatch(updateItemQuantity({ id: item.id, quantity }));
+    dispatch(updateItemQuantity({ _id: item._id, quantity }));
   };
 
   return (
@@ -23,7 +23,7 @@ const CartItem = ({ item }) => {
       <Button
         type="button"
         onClick={() => {
-          dispatch(removeItemFromCart(item.id));
+          dispatch(removeItemFromCart(item._id));
         }}
       >
         Remove from Cart

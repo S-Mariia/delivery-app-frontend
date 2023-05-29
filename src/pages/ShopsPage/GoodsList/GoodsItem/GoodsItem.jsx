@@ -10,7 +10,7 @@ import { Item, Button } from './GoodsItem.styled';
 const GoodsItem = ({ good }) => {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
-  const inCart = cart.find(cart => cart.id === good.id);
+  const inCart = cart.find(productFromCart => productFromCart._id === good._id);
 
   return (
     <Item>
@@ -31,7 +31,7 @@ const GoodsItem = ({ good }) => {
         <Button
           type="button"
           onClick={() => {
-            dispatch(removeItemFromCart(good.id));
+            dispatch(removeItemFromCart(good._id));
           }}
         >
           Remove from Cart

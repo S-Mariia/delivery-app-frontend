@@ -9,6 +9,9 @@ const ShopsPage = lazy(() => import('./pages/ShopsPage/ShopsPage'));
 const ShoppingCartPage = lazy(() =>
   import('./pages/ShoppingCartPage/ShoppingCartPage')
 );
+const OrderHistoryPage = lazy(() =>
+  import('./pages/OrderHistoryPage/OrderHistoryPage')
+);
 
 const UserRoutes = () => {
   return (
@@ -18,6 +21,7 @@ const UserRoutes = () => {
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<ShopsPage />} />
             <Route path="/cart" element={<ShoppingCartPage />} />
+            <Route path="/history" element={<OrderHistoryPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

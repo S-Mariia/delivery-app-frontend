@@ -12,11 +12,11 @@ const cartSlice = createSlice({
       state.items.push({ ...payload, quantity: '1' });
     },
     removeItemFromCart: (state, { payload }) => {
-      state.items = state.items.filter(item => item.id !== payload);
+      state.items = state.items.filter(item => item._id !== payload);
     },
     updateItemQuantity: (state, { payload }) => {
       state.items = state.items.map(item => {
-        return item.id !== payload.id
+        return item._id !== payload._id
           ? item
           : { ...item, quantity: payload.quantity };
       });
