@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getListOfShops } from 'shared/services/api';
 
-import { setCurrentShop } from 'redux/shops/shops-slice';
-import { selectCurrentShop } from 'redux/shops/shops-selectors';
-import { selectCart } from 'redux/cart/cart.selectors';
+import { setCurrentShop } from 'redux/slice';
+import { selectCurrentShop, selectCart } from 'redux/selectors';
 
 import { List, StyledButton } from './Shops.styled';
 
@@ -18,6 +17,12 @@ const Shops = () => {
 
   const currentShop = useSelector(selectCurrentShop);
   const cart = useSelector(selectCart);
+
+  useEffect(() => {
+    if (cart.length !== 0) {
+      const shop = { id: cart[0].shopId };
+    }
+  }, [cart]);
 
   useEffect(() => {
     const fetchShops = async () => {

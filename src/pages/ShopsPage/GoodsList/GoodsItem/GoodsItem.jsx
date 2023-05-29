@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addItemToCart, removeItemFromCart } from 'redux/cart/cart-slice';
-import { selectCart } from 'redux/cart/cart.selectors';
+import { addItemToCart, removeItemFromCart } from 'redux/slice';
+import { selectCart } from 'redux/selectors';
 
 import defaultImage from 'shared/images/burger.jpeg';
 

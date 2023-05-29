@@ -1,7 +1,7 @@
 import { Formik, Form } from 'formik';
 import { useSelector } from 'react-redux';
 
-import { selectCart } from 'redux/cart/cart.selectors';
+import { selectCart } from 'redux/selectors';
 
 import formFields from './form-fields';
 import initialValues from './form-initual-values';

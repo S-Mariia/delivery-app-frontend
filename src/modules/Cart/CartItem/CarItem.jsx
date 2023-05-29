@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { removeItemFromCart, updateItemQuantity } from 'redux/cart/cart-slice';
+import { removeItemFromCart, updateItemQuantity } from 'redux/slice';
 
 import { Item, Button } from './CarItem.styled';
 import defaultImage from 'shared/images/burger.jpeg';
@@ -10,7 +10,6 @@ const CartItem = ({ item }) => {
 
   const handleInputChange = e => {
     const quantity = e.target.value;
-    //   console.log({ id: item.id, quantity });
     dispatch(updateItemQuantity({ _id: item._id, quantity }));
   };
 
