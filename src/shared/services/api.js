@@ -10,7 +10,7 @@ export const getListOfShops = async () => {
 };
 
 export const getGoodsFromShop = async shop => {
-  const { data } = await instance.get(`/products/${shop.id}`);
+  const { data } = await instance.get(`/products/${shop}`);
   return data;
 };
 

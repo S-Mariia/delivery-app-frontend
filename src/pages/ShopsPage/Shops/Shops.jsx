@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getListOfShops } from 'shared/services/api';
 
-import { setCurrentShop } from 'redux/slice';
-import { selectCurrentShop, selectCart } from 'redux/selectors';
+import { setCurrentShopId } from 'redux/slice';
+import { selectCurrentShopId, selectCart } from 'redux/selectors';
 
 import { List, StyledButton } from './Shops.styled';
 
@@ -15,14 +15,8 @@ const Shops = () => {
   const [shopsList, setShopsList] = useState([]);
   const [error, setError] = useState(null);
 
-  const currentShop = useSelector(selectCurrentShop);
+  const currentShopId = useSelector(selectCurrentShopId);
   const cart = useSelector(selectCart);
-
-  useEffect(() => {
-    if (cart.length !== 0) {
-      const shop = { id: cart[0].shopId };
-    }
-  }, [cart]);
 
   useEffect(() => {
     const fetchShops = async () => {
@@ -41,12 +35,12 @@ const Shops = () => {
     fetchShops();
   }, []);
 
-  const handleClick = shop => {
-    if (shop.name !== currentShop.name && cart.length > 0) {
+  const handleClick = id => {
+    if (id !== currentShopId && cart.length > 0) {
       console.log('Cart is full');
       return;
     }
-    dispatch(setCurrentShop(shop));
+    dispatch(setCurrentShopId(id));
   };
 
   return (
@@ -54,9 +48,9 @@ const Shops = () => {
       {shopsList.map(({ name, _id: id }) => (
         <li key={id}>
           <StyledButton
-            currentShop={currentShop.name}
-            shop={name}
-            onClick={() => handleClick({ name, id })}
+            currentShop={currentShopId}
+            shop={id}
+            onClick={() => handleClick(id)}
           >
             {name}
           </StyledButton>

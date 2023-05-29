@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  currentShop: { name: "McDonald's", id: '6474c77b526f0fb3d4c4fe3b' },
-  // currentShop: { name: '', id: '' },
+  currentShopId: '6474c77b526f0fb3d4c4fe3b',
   cart: [],
 };
 
@@ -10,8 +9,8 @@ const deliverySlice = createSlice({
   name: 'delivery',
   initialState,
   reducers: {
-    setCurrentShop: (state, { payload }) => {
-      state.currentShop = payload;
+    setCurrentShopId: (state, { payload }) => {
+      state.currentShopId = payload;
     },
     addItemToCart: (state, { payload }) => {
       state.cart.push({ ...payload, quantity: '1' });
@@ -30,7 +29,7 @@ const deliverySlice = createSlice({
 });
 
 export const {
-  setCurrentShop,
+  setCurrentShopId,
   addItemToCart,
   removeItemFromCart,
   updateItemQuantity,

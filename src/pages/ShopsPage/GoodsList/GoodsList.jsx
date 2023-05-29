@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { getGoodsFromShop } from 'shared/services/api';
 
-import { selectCurrentShop } from 'redux/selectors';
+import { selectCurrentShopId } from 'redux/selectors';
 
 import GoodsItem from './GoodsItem/GoodsItem';
 import { Wrapper, List } from './GoodsList.styled';
@@ -14,11 +14,11 @@ const GoodsList = () => {
   const [goods, setGoods] = useState([]);
   const [error, setError] = useState(null);
 
-  const currentShop = useSelector(selectCurrentShop);
+  const currentShopId = useSelector(selectCurrentShopId);
 
   useEffect(() => {
     const fetchGoods = async shop => {
-      if (!currentShop.id) return;
+      if (!currentShopId) return;
       try {
         setIsLoading(true);
         setError(null);
@@ -31,8 +31,8 @@ const GoodsList = () => {
       }
     };
 
-    fetchGoods(currentShop);
-  }, [currentShop]);
+    fetchGoods(currentShopId);
+  }, [currentShopId]);
 
   return (
     <Wrapper>

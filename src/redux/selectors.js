@@ -1,2 +1,2 @@
-export const selectCurrentShop = state => state.currentShop;
+export const selectCurrentShopId = state => state.currentShopId;
 export const selectCart = state => state.cart;
