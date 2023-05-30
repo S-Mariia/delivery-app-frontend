@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3003/api',
+  baseURL: 'https://delivery-app-backend-ol34.onrender.com/api',
 });
 
 export const getListOfShops = async () => {
