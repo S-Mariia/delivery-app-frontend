@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 
+import { accentColor, errorColor } from 'shared/constants/colors';
+
 export const Label = styled.label`
   display: block;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   margin-bottom: 4px;
+  color: #2a2a2a;
 `;
 
 export const Input = styled(Field)`
@@ -13,20 +16,20 @@ export const Input = styled(Field)`
   padding-left: 12px;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 14px;
-  border: 1px solid
+  font-size: 18px;
+  border: 2px solid
     ${({ name, errors, touched }) => {
-      return errors[name] && touched[name] ? 'red' : 'blue';
+      return errors[name] && touched[name] ? errorColor : accentColor;
     }};
   border-radius: 20px;
 `;
 
 export const TextErrorCss = styled.span`
-  color: red;
-  font-size: 12px;
+  color: ${errorColor};
+  font-size: 16px;
   margin-top: 8px;
 `;
 
 export const Wrapper = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 `;

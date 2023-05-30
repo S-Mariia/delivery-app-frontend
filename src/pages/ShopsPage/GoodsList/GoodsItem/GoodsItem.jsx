@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { GiShoppingCart } from 'react-icons/gi';
 
 import { addItemToCart, removeItemFromCart } from 'redux/slice';
 import { selectCart } from 'redux/selectors';
 
 import defaultImage from 'shared/images/burger.jpeg';
 
-import { Item, Button } from './GoodsItem.styled';
+import { Item, Button, StyledP, Text } from './GoodsItem.styled';
 
 const GoodsItem = ({ good }) => {
   const dispatch = useDispatch();
@@ -15,8 +16,8 @@ const GoodsItem = ({ good }) => {
   return (
     <Item>
       <img src={good.imageUrl || defaultImage} alt={good.name} />
-      <p>{good.name}</p>
-      <p>Price: {good.price}</p>
+      <StyledP>{good.name}</StyledP>
+      <Text>{good.price}₴</Text>
       {!inCart && (
         <Button
           type="button"
@@ -24,7 +25,7 @@ const GoodsItem = ({ good }) => {
             dispatch(addItemToCart(good));
           }}
         >
-          Add to Cart
+          Add to <GiShoppingCart size={26} />
         </Button>
       )}
       {inCart && (
@@ -34,7 +35,7 @@ const GoodsItem = ({ good }) => {
             dispatch(removeItemFromCart(good._id));
           }}
         >
-          Remove from Cart
+          Remove from <GiShoppingCart size={26} />
         </Button>
       )}
     </Item>

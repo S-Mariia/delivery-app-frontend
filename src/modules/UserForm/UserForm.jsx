@@ -15,7 +15,7 @@ import validationSchema from './validation-schema';
 import { createOrder } from 'shared/services/api';
 
 import TextField from 'shared/components/TextField/TextField';
-import { Wrapper } from './UserForm.styled';
+import { Wrapper, Button, Label } from './UserForm.styled';
 
 import Modal from 'shared/components/Modal/Modal';
 import CongratsModal from 'modules/CongratsModal/CongratsModal';
@@ -26,10 +26,6 @@ const UserForm = () => {
 
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
-  const totalPrice = cart.reduce(
-    (acc, { quantity, price }) => quantity * price + acc,
-    0
-  );
 
   const navigate = useNavigate();
 
@@ -40,7 +36,6 @@ const UserForm = () => {
     };
     if (cart.length === 0) {
       toast('Add something to card first', {
-        icon: '🤯',
         style: {
           borderRadius: '10px',
           background: 'darkred',
@@ -61,6 +56,7 @@ const UserForm = () => {
 
   return (
     <Wrapper>
+      <Label>Enter your details to complete the order</Label>
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={validationSchema}
@@ -86,11 +82,11 @@ const UserForm = () => {
               touched={touched}
               {...formFields.address}
             />
-            <button type="submit">Submit</button>
+            <Button type="submit">Make an order</Button>
           </Form>
         )}
       </Formik>
-      <p>Total : {totalPrice}</p>
+
       {error &&
         toast(error, {
           icon: '🤯',

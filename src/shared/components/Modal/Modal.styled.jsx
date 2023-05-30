@@ -25,8 +25,8 @@ export const Wrapper = styled.div`
   left: 50%;
   background-color: #fff;
   transform: translate(-50%, -50%);
-  min-height: 350px;
-  max-width: 350px;
+  min-height: 400px;
+  max-width: 400px;
   width: 100%;
   padding: 12px;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);

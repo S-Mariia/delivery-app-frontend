@@ -4,6 +4,11 @@ import {
   ProductCard,
   ProductDescription,
   ProductsList,
+  OrderDetails,
+  Price,
+  Span,
+  Text,
+  Title,
 } from './HistoryItem.styled';
 
 import defaultImage from 'shared/images/burger.jpeg';
@@ -18,18 +23,23 @@ const HistoryItem = ({ item }) => {
     <Item>
       <ProductsWrapper>
         <ProductsList>
-          {order.map((product, idx) => (
+          {order.map(({ imageUrl, name, price, quantity }, idx) => (
             <ProductCard key={idx}>
-              <img src={defaultImage} alt={product.name} />
+              <img src={imageUrl || defaultImage} alt={name} width={215} />
               <ProductDescription>
-                <p>{product.name}</p>
-                <p>{product.price}</p>
+                <Title>{name}</Title>
+                <Text>Quantity: {quantity}</Text>
+                <Price>{price * quantity}₴</Price>
               </ProductDescription>
             </ProductCard>
           ))}
         </ProductsList>
       </ProductsWrapper>
-      <p>Total: {getTotalPrice(order)}</p>
+      <OrderDetails>
+        <Price>
+          Total price: <Span>{getTotalPrice(order)}₴</Span>
+        </Price>
+      </OrderDetails>
     </Item>
   );
 };

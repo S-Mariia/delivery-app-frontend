@@ -8,7 +8,8 @@ import validationSchema from './validation-schema';
 import { getOrderHistory } from 'redux/operations';
 
 import TextField from 'shared/components/TextField/TextField';
-import { Wrapper } from './UserDataForm.styled';
+import { FormLabel, Wrapper } from './UserDataForm.styled';
+import { Button } from 'modules/UserForm/UserForm.styled';
 
 const UserDataForm = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ const UserDataForm = () => {
 
   return (
     <Wrapper>
+      <FormLabel>
+        In order to view the history of your orders, fill out the form.
+      </FormLabel>
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={validationSchema}
@@ -40,7 +44,7 @@ const UserDataForm = () => {
               touched={touched}
               {...formFields.phone}
             />
-            <button type="submit">Get history</button>
+            <Button type="submit">Get history</Button>
           </Form>
         )}
       </Formik>

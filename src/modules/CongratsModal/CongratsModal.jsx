@@ -1,9 +1,9 @@
-import { Button } from './CongratsModal.styled';
+import { Button, Title, Message } from './CongratsModal.styled';
 const CongratsModal = () => {
   return (
     <div>
-      <h2>Congratulation!</h2>
-      <p>Your order has been accepted. Wait for the courier</p>
+      <Title>Congratulations!🎉</Title>
+      <Message>Your order has been accepted. Wait for the courier</Message>
       <Button to="/">Go shopping more</Button>
     </div>
   );
