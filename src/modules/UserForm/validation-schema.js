@@ -1,8 +1,10 @@
 import * as Yup from 'yup';
 
-const nameRegExp = /^[a-zA-Z ]+$/;
-const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const phoneRegExp = /^\+380\d{9}$/;
+import {
+  nameRegExp,
+  emailRegExp,
+  phoneRegExp,
+} from 'shared/constants/validationRegExp';
 
 const validationSchema = Yup.object({
   name: Yup.string()

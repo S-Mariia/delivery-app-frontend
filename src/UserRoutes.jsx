@@ -5,6 +5,8 @@ import { lazy, Suspense } from 'react';
 import Loader from 'shared/components/Loader/Loader';
 import SharedLayout from 'shared/components/SharedLayout/SharedLayout';
 
+import { Toaster } from 'react-hot-toast';
+
 const ShopsPage = lazy(() => import('./pages/ShopsPage/ShopsPage'));
 const ShoppingCartPage = lazy(() =>
   import('./pages/ShoppingCartPage/ShoppingCartPage')
@@ -16,6 +18,9 @@ const OrderHistoryPage = lazy(() =>
 const UserRoutes = () => {
   return (
     <>
+      <div>
+        <Toaster />
+      </div>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>

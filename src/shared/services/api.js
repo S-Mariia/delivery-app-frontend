@@ -18,3 +18,8 @@ export const createOrder = async order => {
   const { data } = await instance.post('/orders', order);
   return data;
 };
+
+export const getOrderHistory = async ({ email, phone }) => {
+  const { data } = await instance.get(`/orders?email=${email}&phone=${phone}`);
+  return data;
+};

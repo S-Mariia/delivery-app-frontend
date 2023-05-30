@@ -14,7 +14,7 @@ const GoodsItem = ({ good }) => {
 
   return (
     <Item>
-      <img src={defaultImage} alt={good.name} />
+      <img src={good.imageUrl || defaultImage} alt={good.name} />
       <p>{good.name}</p>
       <p>Price: {good.price}</p>
       {!inCart && (
