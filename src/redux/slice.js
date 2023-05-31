@@ -32,6 +32,9 @@ const deliverySlice = createSlice({
           : { ...item, quantity: payload.quantity };
       });
     },
+    clearOrderHistory: state => {
+      state.history = [];
+    },
   },
   extraReducers: builder => {
     builder
@@ -57,6 +60,7 @@ export const {
   removeItemFromCart,
   updateItemQuantity,
   clearCart,
+  clearOrderHistory,
 } = deliverySlice.actions;
 
 export default deliverySlice.reducer;
